@@ -1,3 +1,5 @@
+package Class1;
+
 public class solve_25083 {
     public static void main(String[] args) {
         System.out.println("         ,r'\"7");

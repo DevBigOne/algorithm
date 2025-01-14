@@ -1,3 +1,5 @@
+package Class1;
+
 import java.io.*;
 
 public class solve_2475 {
