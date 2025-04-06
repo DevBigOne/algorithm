@@ -25,14 +25,13 @@ public class bj1012 {
                     dfs(cx, cy);
                 }
             }
-
         }
-
     }
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int tc = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < tc; i++) {
@@ -60,8 +59,9 @@ public class bj1012 {
                 }
             }
 
-            System.out.println(count);
+            sb.append(count).append("\n");
+//            System.out.println(count);
         }
-
+        System.out.println(sb);
     }
 }
