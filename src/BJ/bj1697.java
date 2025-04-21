@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class bj1697 {
+public class bj1697 { // 아직 안품
 
     static int  n, k;
     static int[] arr;
