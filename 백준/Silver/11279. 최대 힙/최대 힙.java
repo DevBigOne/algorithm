@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int t = Integer.parseInt(br.readLine());
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(Collections.reverseOrder());
 
@@ -15,13 +16,15 @@ public class Main {
 
             if (num == 0) {
                 if (minHeap.isEmpty()) {
-                    System.out.println(0);
+                    sb.append(0).append("\n");
                 } else {
-                    System.out.println(minHeap.poll());
+                    sb.append(minHeap.poll()).append("\n");
                 }
             } else {
                 minHeap.offer(num);
             }
         }
+
+        System.out.println(sb);
     }
 }
