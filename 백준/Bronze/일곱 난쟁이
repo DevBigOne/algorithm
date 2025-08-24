@@ -1,0 +1,56 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+/*
+아이디어
+
+9명 중에서 7명을 뽑는 조합을 만든다.
+
+7명을 뽑을 때마다 합을 확인 → 100이면 바로 출력.
+
+found 변수를 둬서 정답을 찾으면 더 이상 탐색하지 않음.
+ */
+public class Main_일곱난쟁이 {
+    static int[] arr = new int[9];
+    static int[] selected = new int[7]; // 뽑은 7명 저장
+    static boolean found = false; // 정답 찾으면 멈추기 위한 flag
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        for (int i = 0; i < 9; i++) {
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+
+        Arrays.sort(arr); // 정렬해서 출력이 오름차순 되도록
+
+        comb(0, 0, 0);
+    }
+
+    // 조합 함수
+    static void comb(int idx, int cnt, int sum) {
+        if (found)
+            return; // 이미 찾았으면 멈춤
+
+        if (cnt == 7) { // 7명 뽑았을 때
+            if (sum == 100) {
+                for (int h : selected) {
+                    System.out.println(h);
+                }
+                found = true; // 정답 찾았음
+            }
+            return;
+        }
+
+        if (idx == 9)
+            return; // 9명 다 확인했으면 종료
+
+        // 현재 idx 선택
+        selected[cnt] = arr[idx];
+        comb(idx + 1, cnt + 1, sum + arr[idx]);
+
+        // 현재 idx 선택 안 함
+        comb(idx + 1, cnt, sum);
+    }
+}
