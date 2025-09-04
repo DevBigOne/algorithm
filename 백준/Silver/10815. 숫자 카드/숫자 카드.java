@@ -1,39 +1,35 @@
-
 import java.io.*;
 import java.util.*;
 
-public class Main{
-    public static void main(String[] args) throws Exception {
+public class Main {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
+        // 상근이가 가진 카드 개수
         int n = Integer.parseInt(br.readLine());
+        HashSet<Integer> set1 = new HashSet<>();
 
-        int[] arr = new int[n];
+        // 카드 값 입력 (공백으로 구분되어 있음)
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+            set1.add(Integer.parseInt(st.nextToken()));
         }
 
-
-        Arrays.sort(arr);
-
+        // 확인할 카드 개수
         int m = Integer.parseInt(br.readLine());
+
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < m; i++) {
             int x = Integer.parseInt(st.nextToken());
 
-            int pos = Arrays.binarySearch(arr, x);
-            int val;
-            if (pos >= 0) {
-                val = 1;
+            if (set1.contains(x)) {
+                sb.append("1 ");
             } else {
-                val = 0;
+                sb.append("0 ");
             }
-
-            sb.append(val).append(' ');
         }
 
-        System.out.print(sb.toString());
+        System.out.println(sb.toString());
     }
 }
