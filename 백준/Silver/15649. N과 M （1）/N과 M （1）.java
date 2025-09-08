@@ -4,35 +4,36 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-    static int n, m;
-    static boolean[] used;
-    static int[] seq;
-
+    static boolean[] visited;
+    static int[] arr;
+    static int n,m;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
-        used = new boolean[n + 1]; // 중복되는거 확인
-        seq = new int[m]; // 무슨 숫자를 썻는지 저장할려고
 
-        backtrack(0);
+        arr = new int[n + 1];
+        visited = new boolean[n + 1];
+
+        back(0);
+
     }
-    static void backtrack(int depth) {
-        if (depth == m) {
-            for (int num : seq) {
-                System.out.print(num + " ");
+
+    private static void back(int cnt) {
+        if (cnt == m) {
+            for (int i = 0; i < m; i++) {
+                System.out.print(arr[i] + " ");
             }
             System.out.println();
-            return; 
+            return;
         }
-
-        for (int num = 1; num <= n; num++) {
-            if (!used[num]) {
-                used[num] = true; // 
-                seq[depth] = num;
-                backtrack(depth + 1);
-                used[num] = false;
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                arr[cnt] = i;
+                back(cnt + 1);
+                visited[i] = false;
             }
         }
     }
