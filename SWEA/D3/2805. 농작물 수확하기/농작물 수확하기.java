@@ -7,24 +7,23 @@ public class Solution {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int T = Integer.parseInt(br.readLine());
-
         for (int t = 1; t <= T; t++) {
-            int n =  Integer.parseInt(br.readLine());
+            int n = Integer.parseInt(br.readLine());
 
-            int[][] arr = new int[n][n];
+            int[][] arr  = new int[n][n];
 
             for (int i = 0; i < n; i++) {
-                String line = br.readLine();
+                String s  = br.readLine();
                 for (int j = 0; j < n; j++) {
-                    arr[i][j] = line.charAt(j) - '0';
+                    arr[i][j] = s.charAt(j) - '0';
                 }
             }
 
+            int all = n / 2;
             int sum = 0;
-            int mid = n / 2;
             for (int i = 0; i < n; i++) {
-                int range = Math.abs(mid - i); 
-                for (int j = range; j < n - range; j++) { 
+                int range = Math.abs(all - i);
+                for (int j = range; j < n - range; j++) {
                     sum += arr[i][j];
                 }
             }
