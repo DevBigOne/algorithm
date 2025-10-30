@@ -24,22 +24,15 @@ public class Main
 		for(int i = 0 ; i < N ; i++){
 		    oil[i] = Integer.parseInt(st.nextToken());
 		}
-		int cost = 0; //비용 담을 변수 
+		long cost = 0; //비용 담을 변수 
+		long minPrice = oil[0];
 		//메인 로직
 		for(int i = 0 ; i < N-1 ; i++){
-		    //그 뒤의 가격 비교
-		    int flag = 0;
-		    for(int j = i+1; j < N-1 ; j++ ){
-		        if(oil[j] < oil[i]) flag = 1; //작은 가격이 후에 있음
-		    }
-		    //그 뒤에 작은 가격이 있다면
-		    if(flag == 1){
-		        cost += oil[i]*dist[i];
-		    } else { // 지금이 제일 가격 적다면 
-		        for(int k = i ; k < N-1 ; k++){
-		            cost += oil[i]*dist[k];
-		        }
-		        break; //반복문 탈출 
+		    if(oil[i] < minPrice){
+		        minPrice = oil[i];
+		        cost += minPrice * dist[i];
+		    } else{
+		        cost += minPrice * dist[i];
 		    }
 		    
 		}
